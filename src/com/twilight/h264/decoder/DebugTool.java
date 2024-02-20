@@ -97,8 +97,10 @@ public class DebugTool {
 
 			System.out.print("error_status_table: ");
 			if(h.s.error_status_table != null)
-			for(int i=0;i</*h.s.error_status_table.length*/32 && h.s.error_status_table.length > 32;i++) {
+			{
+			    for(int i=0;i</*h.s.error_status_table.length*/32 && h.s.error_status_table.length > 32;i++) {
 				System.out.print(","+h.s.error_status_table[i]);
+			}
 			} // for
 			System.out.println();
 		} catch(Exception e) {

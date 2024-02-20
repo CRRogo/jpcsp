@@ -2344,7 +2344,9 @@ public class H264Context {
 	    } else {
 	        if(0!=(mb_type & 7)){
 	            if(0!=this.deblocking_filter)
-	                xchg_mb_border(dest_y_base, dest_y_offset, dest_cb_base, dest_cb_offset, dest_cr_base, dest_cr_offset, linesize, uvlinesize, 1, simple);
+	                {
+	                    xchg_mb_border(dest_y_base, dest_y_offset, dest_cb_base, dest_cb_offset, dest_cr_base, dest_cr_offset, linesize, uvlinesize, 1, simple);
+	                }
 	            
 	            //if(0!=simple || 0==MpegEncContext.CONFIG_GRAY || 0==(s.flags & MpegEncContext.CODEC_FLAG_GRAY)){
 	                this.hpc.pred8x8[ this.chroma_pred_mode ].pred8x8(dest_cb_base, dest_cb_offset, uvlinesize);
@@ -4324,12 +4326,16 @@ public class H264Context {
 
 	                if( Math.abs( p2 - p0 ) < beta ) {
 	                    if(tc0!=0)
-	                    pix_base[pix_offset + -2] = p1 + av_clip( ( p2 + ( ( p0 + q0 + 1 ) >> 1 ) - ( p1 << 1 ) ) >> 1, -tc0, tc0 );
+	                    {
+	                        pix_base[pix_offset + -2] = p1 + av_clip( ( p2 + ( ( p0 + q0 + 1 ) >> 1 ) - ( p1 << 1 ) ) >> 1, -tc0, tc0 );
+	                    }
 	                    tc++;
 	                }
 	                if( Math.abs( q2 - q0 ) < beta ) {
 	                    if(tc0!=0)
-	                    pix_base[pix_offset + 1] = q1 + av_clip( ( q2 + ( ( p0 + q0 + 1 ) >> 1 ) - ( q1 << 1 ) ) >> 1, -tc0, tc0 );
+	                    {
+	                        pix_base[pix_offset + 1] = q1 + av_clip( ( q2 + ( ( p0 + q0 + 1 ) >> 1 ) - ( q1 << 1 ) ) >> 1, -tc0, tc0 );
+	                    }
 	                    tc++;
 	                }
 
@@ -5738,12 +5744,16 @@ public class H264Context {
 	                        if((int)s.gb.get_bits( 1,"minutes_flag")!=0){      /* minutes_flag */
 	                            s.gb.skip_bits( 6);     /* minutes_value 0..59 */
 	                            if((int)s.gb.get_bits( 1,"hours_flag")!=0)   /* hours_flag */
-	                                s.gb.skip_bits( 5); /* hours_value 0..23 */
+	                                {
+	                                    s.gb.skip_bits( 5);
+	                                } /* hours_value 0..23 */
 	                        }
 	                    }
 	                }
 	                if(this.sps.time_offset_length > 0)
-	                    s.gb.skip_bits( this.sps.time_offset_length); /* time_offset */
+	                    {
+	                        s.gb.skip_bits( this.sps.time_offset_length);
+	                    } /* time_offset */
 	            }
 	        }
 
@@ -7460,7 +7470,9 @@ public class H264Context {
 	        //memcpy(this.ref_list[list], this.default_ref_list[list], sizeof(Picture)*this.ref_count[list]);
 	    	for(int i=0;i<this.ref_count[list];i++) {
 	    		if(this.ref_list[list][i] == null)
-	    			this.ref_list[list][i] = new AVFrame();
+	    			{
+	    			    this.ref_list[list][i] = new AVFrame();
+	    			}
 	    		 this.default_ref_list[list][i].copyTo(this.ref_list[list][i]);
 	    	} // for
 

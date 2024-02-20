@@ -235,12 +235,16 @@ public class H264DSPContext {
 
                     if( Math.abs( p2 - p0 ) < beta ) {
                         if(tc0[i] != 0)
-                        pix[pix_offset -2*xstride] = p1 + av_clip( (( p2 + ( ( p0 + q0 + 1 ) >> 1 ) ) >> 1) - p1, -tc0[i], tc0[i] );
+                        {
+                            pix[pix_offset -2*xstride] = p1 + av_clip( (( p2 + ( ( p0 + q0 + 1 ) >> 1 ) ) >> 1) - p1, -tc0[i], tc0[i] );
+                        }
                         tc++;
                     }
                     if( Math.abs( q2 - q0 ) < beta ) {
                         if(tc0[i] != 0)
-                        pix[pix_offset +   xstride] = q1 + av_clip( (( q2 + ( ( p0 + q0 + 1 ) >> 1 ) ) >> 1) - q1, -tc0[i], tc0[i] );
+                        {
+                            pix[pix_offset +   xstride] = q1 + av_clip( (( q2 + ( ( p0 + q0 + 1 ) >> 1 ) ) >> 1) - q1, -tc0[i], tc0[i] );
+                        }
                         tc++;
                     }
 
