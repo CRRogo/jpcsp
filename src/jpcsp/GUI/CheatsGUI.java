@@ -16,6 +16,7 @@
  */
 package jpcsp.GUI;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
@@ -646,7 +647,7 @@ public class CheatsGUI extends javax.swing.JFrame implements KeyListener {
                 BufferedReader reader = new BufferedReader(new FileReader(cheatDBFile));
                 boolean insideApplicationid = false;
                 while (reader.ready()) {
-                    String line = reader.readLine();
+                    String line = BoundedLineReader.readLine(reader, 5_000_000);
                     if (line == null) {
                         // end of file
                         break;

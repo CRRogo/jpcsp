@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.autotests;
 
+import io.github.pixee.security.BoundedLineReader;
 import static jpcsp.graphics.VideoEngine.readLittleEndianInt;
 import static jpcsp.graphics.VideoEngine.readLittleEndianShort;
 
@@ -404,7 +405,7 @@ public class AutoTestsRunner {
 	        f = new BufferedReader(new FileReader(filePath));
 	        // Read line by line to exclude all carriage returns ('\r')
 	        while (true) {
-	        	String line = f.readLine();
+	        	String line = BoundedLineReader.readLine(f, 5_000_000);
 	        	if (line == null) {
 	        		break;
 	        	}
