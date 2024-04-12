@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.graphics.export;
 
+import java.nio.file.Files;
 import static jpcsp.graphics.GeCommands.PRIM_TRIANGLE;
 import static jpcsp.graphics.GeCommands.PRIM_TRIANGLE_STRIPS;
 
@@ -87,8 +88,8 @@ public class WavefrontExporter implements IGraphicsExporter {
 
 		try {
 			// Prepare the export writers
-			exportObj = new BufferedWriter(new FileWriter(String.format("%sexport.obj", directory)));
-			exportMtl = new BufferedWriter(new FileWriter(String.format("%sexport.mtl", directory)));
+			exportObj = Files.newBufferedWriter(String.format("%sexport.obj", directory).toPath());
+			exportMtl = Files.newBufferedWriter(String.format("%sexport.mtl", directory).toPath());
 		} catch (IOException e) {
 			log.error("Error creating the export files", e);
 		}

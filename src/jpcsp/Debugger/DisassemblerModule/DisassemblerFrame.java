@@ -16,6 +16,7 @@
  */
 package jpcsp.Debugger.DisassemblerModule;
 
+import java.nio.file.Files;
 import static jpcsp.Allegrex.Common._ra;
 import static jpcsp.Allegrex.Common._zr;
 import static jpcsp.Allegrex.Common.gprNames;
@@ -1459,7 +1460,7 @@ private void DumpCodeToTextActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
         BufferedWriter bufferedWriter = null;
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter(dlgDC.getFilename()));
+            bufferedWriter = Files.newBufferedWriter(dlgDC.getFilename().toPath());
             bufferedWriter.write("------- JPCSP DISASM -------");
             bufferedWriter.newLine();
             for (int i = dlgDC.getStartAddress(); i <= dlgDC.getEndAddress(); i += 4) {
@@ -1940,7 +1941,7 @@ private void ExportBreaksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
             }
 
-            out = new BufferedWriter(new FileWriter(f));
+            out = Files.newBufferedWriter(f.toPath());
 
             for (int i = 0; i < breakpoints.size(); i++) {
                 out.write(Integer.toHexString(breakpoints.get(i)) + System.getProperty("line.separator"));
