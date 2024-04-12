@@ -16,6 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.network.upnp;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -63,7 +65,7 @@ public class IGD {
 		documentBuilderFactory.setCoalescing(true);
 
 		try {
-			URL url = new URL(descriptionUrl);
+			URL url = Urls.create(descriptionUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document description = documentBuilder.parse(url.openStream());
 			parseIGDdata(description);
