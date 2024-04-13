@@ -70,7 +70,7 @@ public class UmdBrowser extends javax.swing.JDialog {
     private static class EbootFileFilter implements FileFilter {
         @Override
         public boolean accept(File file) {
-            return file.getName().equalsIgnoreCase("eboot.pbp");
+            return "eboot.pbp".equalsIgnoreCase(file.getName());
         }
     }
 

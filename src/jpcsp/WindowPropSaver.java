@@ -92,12 +92,12 @@ public class WindowPropSaver implements AWTEventListener {
         String identifierForConfig = window.getClass().getSimpleName();
 
         // do not load positions for standard dialogs (like file open)
-        if (identifierForConfig.equals("JDialog")) {
+        if ("JDialog".equals(identifierForConfig)) {
             return;
         }
 
         // MainGUI needs special handling due to being able to go fullscreen
-        if (identifierForConfig.equals("MainGUI") && Emulator.getMainGUI().isFullScreen()) {
+        if ("MainGUI".equals(identifierForConfig) && Emulator.getMainGUI().isFullScreen()) {
             return;
         }
 
@@ -107,7 +107,7 @@ public class WindowPropSaver implements AWTEventListener {
             Emulator.log.debug("loading window position of '" + identifierForConfig + "'");
 
             // LogWindow needs special handling if it shall be attached to the MainGUI
-            if (!(identifierForConfig.equals("LogWindow") && Settings.getInstance().readBool("gui.snapLogwindow"))) {
+            if (!("LogWindow".equals(identifierForConfig) && Settings.getInstance().readBool("gui.snapLogwindow"))) {
                 window.setLocation(Settings.getInstance().readWindowPos(identifierForConfig));
             }
 
@@ -139,12 +139,12 @@ public class WindowPropSaver implements AWTEventListener {
             String identifierForConfig = window.getClass().getSimpleName();
 
             // do not save positions for standard dialogs (like file open)
-            if (identifierForConfig.equals("JDialog")) {
+            if ("JDialog".equals(identifierForConfig)) {
                 return;
             }
 
             // MainGUI needs special handling due to being able to go fullscreen
-            if (identifierForConfig.equals("MainGUI") && Emulator.getMainGUI().isFullScreen()) {
+            if ("MainGUI".equals(identifierForConfig) && Emulator.getMainGUI().isFullScreen()) {
                 return;
             }
 

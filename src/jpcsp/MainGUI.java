@@ -2210,7 +2210,7 @@ private void ejectMsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 String umdDataIdString;
                 umdDataFile.readFully(umdDataId, 0, 9);
                 umdDataIdString = new String(umdDataId);
-                if (umdDataIdString.equals("")) {
+                if ("".equals(umdDataIdString)) {
                     discId = State.DISCID_UNKNOWN_UMD;
                 } else {
                     discId = umdDataIdString;
@@ -2977,7 +2977,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
                 break;
             }
 
-            if (!ignorePSPGame || !(umdPath.equals("ms0\\PSP\\GAME") || umdPath.equals(Settings.getInstance().getDirectoryMapping("ms0") + "PSP/GAME"))) {
+            if (!ignorePSPGame || !("ms0\\PSP\\GAME".equals(umdPath) || umdPath.equals(Settings.getInstance().getDirectoryMapping("ms0") + "PSP/GAME"))) {
             	umdPaths.add(new File(umdPath + "/"));
             }
         }
@@ -3032,11 +3032,11 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
     	}
 
     	for (int i = 0; i < args.length; i++) {
-            if (args[i].equals("-t") || args[i].equals("--tests")) {
+            if ("-t".equals(args[i]) || "--tests".equals(args[i])) {
                 throw (new RuntimeException("Shouldn't get there"));
-            } else if (args[i].equals("-d") || args[i].equals("--debugger")) {
+            } else if ("-d".equals(args[i]) || "--debugger".equals(args[i])) {
                 EnterDebuggerActionPerformed(null);
-            } else if (args[i].equals("-f") || args[i].equals("--loadfile")) {
+            } else if ("-f".equals(args[i]) || "--loadfile".equals(args[i])) {
                 i++;
                 if (i < args.length) {
                     File file = new File(args[i]);
@@ -3048,7 +3048,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
                     printUsage();
                     break;
                 }
-            } else if (args[i].equals("-u") || args[i].equals("--loadumd")) {
+            } else if ("-u".equals(args[i]) || "--loadumd".equals(args[i])) {
                 i++;
                 if (i < args.length) {
                     File file = new File(args[i]);
@@ -3060,17 +3060,17 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
                     printUsage();
                     break;
                 }
-            } else if (args[i].equals("--bufferumd")) {
+            } else if ("--bufferumd".equals(args[i])) {
             	doUmdBuffering = true;
             	// Delete any previously existing umdbuffer files as they might belong to another ISO
             	UmdIsoReader.deleteUmdbufferFiles();
-            } else if (args[i].equals("--loadbufferedumd")) {
+            } else if ("--loadbufferedumd".equals(args[i])) {
             	doUmdBuffering = true;
             	Modules.sceDisplayModule.setCalledFromCommandLine();
             	loadUMD(null);
-            } else if (args[i].equals("-r") || args[i].equals("--run")) {
+            } else if ("-r".equals(args[i]) || "--run".equals(args[i])) {
                 RunEmu();
-            } else if (args[i].equals("--netClientPortShift")) {
+            } else if ("--netClientPortShift".equals(args[i])) {
                 i++;
                 if (i < args.length) {
                     int netClientPortShift = Integer.parseInt(args[i]);
@@ -3079,7 +3079,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
                     printUsage();
                     break;
                 }
-            } else if (args[i].equals("--netServerPortShift")) {
+            } else if ("--netServerPortShift".equals(args[i])) {
                 i++;
                 if (i < args.length) {
                     int netServerPortShift = Integer.parseInt(args[i]);
@@ -3088,9 +3088,9 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
                     printUsage();
                     break;
                 }
-            } else if (args[i].equals("--ProOnline")) {
+            } else if ("--ProOnline".equals(args[i])) {
                 ProOnlineNetworkAdapter.setEnabled(true);
-            } else if (args[i].equals("--localIPAddress")) {
+            } else if ("--localIPAddress".equals(args[i])) {
             	i++;
             	if (i < args.length) {
             		Wlan.setLocalIPAddress(args[i]);
@@ -3098,7 +3098,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
             		printUsage();
             		break;
             	}
-            } else if (args[i].equals("--vsh")) {
+            } else if ("--vsh".equals(args[i])) {
             	runFromVsh = true;
             	logStart();
 	            setTitle(MetaInformation.FULL_NAME + " - VSH");
@@ -3125,9 +3125,9 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
             	HLEModuleManager.getInstance().LoadFlash0Module("PSP_MODULE_AV_VAUDIO");
             	HLEModuleManager.getInstance().LoadFlash0Module("PSP_MODULE_AV_ATRAC3PLUS");
             	HLEModuleManager.getInstance().LoadFlash0Module("PSP_MODULE_AV_AVCODEC");
-            } else if (args[i].equals("--reboot")) {
+            } else if ("--reboot".equals(args[i])) {
             	doReboot();
-            } else if (args[i].equals("--debugCodeBlockCalls")) {
+            } else if ("--debugCodeBlockCalls".equals(args[i])) {
             	RuntimeContext.debugCodeBlockCalls = true;
             } else if (args[i].matches("--flash[0-2]") || args[i].matches("--ms[0]") || args[i].matches("--exdata[0]")) {
             	String directoryName = args[i].substring(2);
@@ -3144,20 +3144,20 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
             		printUsage();
             		break;
             	}
-            } else if (args[i].equals("--logsettings")) {
+            } else if ("--logsettings".equals(args[i])) {
             	// This argument has already been processed in initLog()
             	i++;
-            } else if (args[i].equals("--stateFileName")) {
+            } else if ("--stateFileName".equals(args[i])) {
             	i++;
             	if (i < args.length) {
             		stateFileName = args[i];
             	} else {
             		printUsage();
             	}
-            } else if (args[i].equals("--settingsFileName")) {
+            } else if ("--settingsFileName".equals(args[i])) {
             	// This argument has already been processed in initSettings()
             	i++;
-            } else if (args[i].equals("--debuggerMemoryFileName")) {
+            } else if ("--debuggerMemoryFileName".equals(args[i])) {
             	// This argument has already been processed in initSettings()
             	i++;
             } else {
@@ -3172,7 +3172,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
 
     	// Verify if another LogSettings.xml file name has been provided on the command line
     	for (int i = 0; i < args.length; i++) {
-    		if (args[i].equals("--logsettings")) {
+    		if ("--logsettings".equals(args[i])) {
     			i++;
     			logSettingsFileName = args[i];
     		}
@@ -3185,7 +3185,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
     private static void initSettings(String args[]) {
     	// Verify if settings file name has been provided on the command line
     	for (int i = 0; i < args.length; i++) {
-    		if (args[i].equals("--settingsFileName")) {
+    		if ("--settingsFileName".equals(args[i])) {
     			i++;
     			Settings.SETTINGS_FILE_NAME = args[i];
     		}
@@ -3195,7 +3195,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
     private static void initDebuggerMemory(String args[]) {
     	// Verify if the debugger memory file name has been provided on the command line
     	for (int i = 0; i < args.length; i++) {
-    		if (args[i].equals("--debuggerMemoryFileName")) {
+    		if ("--debuggerMemoryFileName".equals(args[i])) {
     			i++;
     			DebuggerMemory.mBrkFilePath = args[i];
     		}
@@ -3222,7 +3222,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
 
         // prepare i18n
         String locale = Settings.getInstance().readString("emu.language");
-        if (!locale.equals("systemLocale")) {
+        if (!"systemLocale".equals(locale)) {
             // extract language and country for Locale()
             String language = locale.substring(0, 2);
             String country = locale.substring(3, 5);
@@ -3232,7 +3232,7 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
         }
 
         if (args.length > 0) {
-            if (args[0].equals("--tests")) {
+            if ("--tests".equals(args[0])) {
                 (new AutoTestsRunner()).run();
                 return;
             }

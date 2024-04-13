@@ -110,13 +110,13 @@ public class Utilities {
 
     public static String formatString(String type, String oldstring) {
         int counter = 0;
-        if (type.equals("byte")) {
+        if ("byte".equals(type)) {
             counter = 2;
         }
-        if (type.equals("short")) {
+        if ("short".equals(type)) {
             counter = 4;
         }
-        if (type.equals("long")) {
+        if ("long".equals(type)) {
             counter = 8;
         }
         int len = oldstring.length();
@@ -504,7 +504,7 @@ public class Utilities {
     	if (m.matches()) {
     		int reg = getRegister(m.group(1));
     		int offset = parseInteger(m.group(3));
-    		if (m.group(2).equals("-")) {
+    		if ("-".equals(m.group(2))) {
     			offset = -offset;
     		}
 

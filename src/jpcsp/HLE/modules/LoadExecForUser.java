@@ -132,7 +132,7 @@ public class LoadExecForUser extends HLEModule {
         String name = filename.getString();
 
         // The PSP is replacing a loadexec of disc0:/PSP_GAME/SYSDIR/BOOT.BIN with EBOOT.BIN
-        if (name.equals(unencryptedBootPath)) {
+        if (unencryptedBootPath.equals(name)) {
     		log.info(String.format("sceKernelLoadExec '%s' replaced by '%s'", name, encryptedBootPath));
     		name = encryptedBootPath;
         }

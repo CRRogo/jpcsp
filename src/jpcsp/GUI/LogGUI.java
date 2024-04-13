@@ -703,7 +703,7 @@ public class LogGUI extends javax.swing.JFrame {
         snapConsoleCheck.setSelected(Settings.getInstance().readBool("gui.snapLogwindow"));
 
         String keyword = Settings.getInstance().readString("log.keyword");
-        if (!keyword.equals("LOG_ALL")) {
+        if (!"LOG_ALL".equals(keyword)) {
             logKeywordField.setText(keyword);
             logByKeywordCheck.setSelected(true);
         } else {
@@ -1087,7 +1087,7 @@ private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 f.delete();
             }
             String outName = "log";
-            if (!logoutpath.getText().equals("")) {
+            if (!"".equals(logoutpath.getText())) {
                 outName = logoutpath.getText();
             }
 

@@ -238,7 +238,7 @@ public class Loader {
             File[] eboot = metadir.listFiles(new FileFilter() {
                 @Override
                 public boolean accept(File arg0) {
-                    return arg0.getName().equalsIgnoreCase("eboot.pbp");
+                    return "eboot.pbp".equalsIgnoreCase(arg0.getName());
                 }
             });
             if (eboot.length > 0)
@@ -252,7 +252,7 @@ public class Loader {
             File[] eboot = metadir.listFiles(new FileFilter() {
                 @Override
                 public boolean accept(File arg0) {
-                    return arg0.getName().equalsIgnoreCase("eboot.pbp");
+                    return "eboot.pbp".equalsIgnoreCase(arg0.getName());
                 }
             });
             if (eboot.length > 0)
@@ -279,7 +279,7 @@ public class Loader {
             File[] psffile = pbpfile.getParentFile().listFiles(new FileFilter() {
                 @Override
                 public boolean accept(File arg0) {
-                    return arg0.getName().equalsIgnoreCase("param.sfo");
+                    return "param.sfo".equalsIgnoreCase(arg0.getName());
                 }
             });
             if (psffile != null && psffile.length > 0) {

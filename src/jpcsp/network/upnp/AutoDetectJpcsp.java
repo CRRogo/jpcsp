@@ -78,7 +78,7 @@ public class AutoDetectJpcsp {
 
 		String proOnlineMetaServer = ProOnlineNetworkAdapter.getMetaServer();
 		// The ProOnline server has to be started if the metaserver is configured as "localhost"
-		if (proOnlineMetaServer.equalsIgnoreCase("localhost")) {
+		if ("localhost".equalsIgnoreCase(proOnlineMetaServer)) {
 			return true;
 		}
 

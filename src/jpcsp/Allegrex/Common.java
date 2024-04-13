@@ -642,37 +642,37 @@ public class Common {
         String s = String.format("%1$-10s %2$s, %3$s, %4$s", opname, gprNames[rd], gprNames[rs], gprNames[rt]);
         if (rs == 0 && rt == 0) {
 
-            if (opname.equals("xor") || opname.equals("nor")) {
+            if ("xor".equals(opname) || "nor".equals(opname)) {
                 return String.format("%2$s <=> li %1$s, -1", gprNames[rd], s);
             }
 
             return String.format("%2$s <=> li %1$s, 0", gprNames[rd], s);
         } else if (rs == 0) {
 
-            if (opname.equals("and")) {
+            if ("and".equals(opname)) {
                 return String.format("%2$s <=> li %1$s, 0", gprNames[rd], s);
             }
 
-            if (opname.equals("nor")) {
+            if ("nor".equals(opname)) {
                 return String.format("%3$s <=> li %1$s, not %2$s", gprNames[rd], gprNames[rt], s);
             }
 
-            if (opname.equals("sub")) {
+            if ("sub".equals(opname)) {
                 return String.format("%3$s <=> neg %1$s, %2$s", gprNames[rd], gprNames[rt], s);
             }
 
-            if (opname.equals("subu")) {
+            if ("subu".equals(opname)) {
                 return String.format("%3$s <=> negu %1$s, %2$s", gprNames[rd], gprNames[rt], s);
             }
 
             return String.format("%3$s <=> move %1$s, %2$s", gprNames[rd], gprNames[rt], s);
         } else if (rt == 0) {
 
-            if (opname.equals("and")) {
+            if ("and".equals(opname)) {
                 return String.format("%2$s <=> li %1$s, 0", gprNames[rd], s);
             }
 
-            if (opname.equals("nor")) {
+            if ("nor".equals(opname)) {
                 return String.format("%3$s <=> li %1$s, not %2$s", gprNames[rd], gprNames[rs], s);
             }
 
@@ -687,7 +687,7 @@ public class Common {
     }
 
     public static String disasmRSRTOFFSET(String opname, int rs, int rt, int simm16, int opcode_address) {
-    	if (rs == rt && opname.equals("beq")) {
+    	if (rs == rt && "beq".equals(opname)) {
     		return String.format("%1$-10s 0x%2$08X", "b", ((int) (short) simm16) * 4 + opcode_address + 4);
     	}
 
@@ -703,11 +703,11 @@ public class Common {
 
         if (rs == 0) {
 
-            if (opname.equals("andi")) {
+            if ("andi".equals(opname)) {
                 return String.format("%2$s <=> li %1$s, 0", gprNames[rt], s);
             } else if (opname.matches("slti")) {
                 return String.format("%3$s <=> li %1$s, %2$d", gprNames[rt], ((0 < imm16) ? 1 : 0), s);
-            } else if (opname.matches("addiu") || opname.equals("ori")) {
+            } else if (opname.matches("addiu") || "ori".equals(opname)) {
                 return String.format("%3$s <=> li %1$s, %2$d", gprNames[rt], imm16, s);
             }
 
@@ -741,7 +741,7 @@ public class Common {
 
         String disasm = String.format("%1$-10s 0x%2$08X", opname, jump);
         // Try to find a human-readable name for the address
-        if (opname.equals("jal") || opname.equals("j")) {
+        if ("jal".equals(opname) || "j".equals(opname)) {
         	String functionName = Utilities.getFunctionNameByAddress(jump);
         	if (functionName != null) {
         		disasm += String.format(" [%s]", functionName);

@@ -185,11 +185,11 @@ public class MemoryBreakpointsDialog extends javax.swing.JDialog {
                     break;
                 case COL_ACCESSTYPE:
                     String value = ((String) aValue).toUpperCase();
-                    if (value.equals("READ")) {
+                    if ("READ".equals(value)) {
                         mbp.setAccess(AccessType.READ);
-                    } else if (value.equals("WRITE")) {
+                    } else if ("WRITE".equals(value)) {
                         mbp.setAccess(AccessType.WRITE);
-                    } else if (value.equals("READWRITE")) {
+                    } else if ("READWRITE".equals(value)) {
                         mbp.setAccess(AccessType.READWRITE);
                     }
                     break;

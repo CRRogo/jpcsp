@@ -87,23 +87,23 @@ public class DebuggerMemory extends Memory {
         if (token.isEmpty()) {
             return;
         }
-        if (token.equals("read")) {
+        if ("read".equals(token)) {
             traceMemoryRead = true;
-        } else if (token.equals("read8")) {
+        } else if ("read8".equals(token)) {
             traceMemoryRead8 = true;
-        } else if (token.equals("read16")) {
+        } else if ("read16".equals(token)) {
             traceMemoryRead16 = true;
-        } else if (token.equals("read32")) {
+        } else if ("read32".equals(token)) {
             traceMemoryRead32 = true;
-        } else if (token.equals("write")) {
+        } else if ("write".equals(token)) {
             traceMemoryWrite = true;
-        } else if (token.equals("write8")) {
+        } else if ("write8".equals(token)) {
             traceMemoryWrite8 = true;
-        } else if (token.equals("write16")) {
+        } else if ("write16".equals(token)) {
             traceMemoryWrite16 = true;
-        } else if (token.equals("write32")) {
+        } else if ("write32".equals(token)) {
             traceMemoryWrite32 = true;
-        } else if (token.equals("pause")) {
+        } else if ("pause".equals(token)) {
             pauseEmulatorOnMemoryBreakpoint = true;
         } else {
             log.error(String.format("Unknown token '%s'", token));

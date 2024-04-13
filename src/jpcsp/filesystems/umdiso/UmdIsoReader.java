@@ -266,10 +266,10 @@ public class UmdIsoReader implements IBrowser {
         // occurrences of "." and "..".
         int pathLength = path.length;
         for (int i = 0; i < pathLength;) {
-            if (path[i].equals(".")) {
+            if (".".equals(path[i])) {
                 // Remove "."
                 pathLength = removePath(path, i, pathLength);
-            } else if (path[i].equals("..")) {
+            } else if ("..".equals(path[i])) {
                 // Remove ".." and its parent
                 pathLength = removePath(path, i, pathLength);
                 pathLength = removePath(path, i - 1, pathLength);
@@ -428,7 +428,7 @@ public class UmdIsoReader implements IBrowser {
                 }
             }
 
-            if ((info == null || isDirectory(info)) && !file.equals(".") && !file.equals("\01")) {
+            if ((info == null || isDirectory(info)) && !".".equals(file) && !"\01".equals(file)) {
                 try {
                     String[] childFiles = listDirectory(filePath);
                     String fileName = getFileNameRecursive(fileStartSector, filePath, childFiles);
@@ -479,7 +479,7 @@ public class UmdIsoReader implements IBrowser {
             // "." isn't a directory (throws an exception)
             // "\01" claims to be a directory but ends up in an infinite loop
             // ignore them here as they do not contribute much to the listing
-            if (file.equals(".") || file.equals("\01")) {
+            if (".".equals(file) || "\01".equals(file)) {
                 continue;
             }
 

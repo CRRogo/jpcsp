@@ -471,10 +471,10 @@ public class IoFileMgrForUser extends HLEModule {
             printableposition = 0;
             // Hide iso special files
             if (filenames != null) {
-                if (filenames.length > position && filenames[position].equals(".")) {
+                if (filenames.length > position && ".".equals(filenames[position])) {
                     position++;
                 }
-                if (filenames.length > position && filenames[position].equals("\01")) {
+                if (filenames.length > position && "\01".equals(filenames[position])) {
                     position++;
                 }
             }

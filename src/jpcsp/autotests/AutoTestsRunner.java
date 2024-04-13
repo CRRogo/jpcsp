@@ -156,7 +156,7 @@ public class AutoTestsRunner {
 					runTestFolder(file);
 				} else if (file.isFile()) {
 					String name = file.getPath();
-					if (name.substring(name.length() - 9).equals(".expected")) {
+					if (".expected".equals(name.substring(name.length() - 9))) {
 						runTest(name.substring(0, name.length() - 9));
 					}
 				}

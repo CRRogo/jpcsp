@@ -170,7 +170,7 @@ public class TextPaneAppender extends AppenderSkeleton {
                 
                 // Log everything if there's no keyword, or just log messages with the
                 // specified keyword when it exists.
-                if (keyword.equals("LOG_ALL") || (!keyword.equals("LOG_ALL") && text.contains(keyword))) {
+                if ("LOG_ALL".equals(keyword) || (!"LOG_ALL".equals(keyword) && text.contains(keyword))) {
                     doc.insertString(doc.getLength(), text + trace, attributes.get(event.getLevel()));
                 }
 

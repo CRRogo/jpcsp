@@ -2402,7 +2402,7 @@ public class sceUtility extends HLEModule {
 		    	                    	for (int i = 0; i < allFileNames.length; i++) {
 		    	                    		String fileName = allFileNames[i];
 		    	        	                // Skip iso special files
-		    	        	                if (!fileName.equals(".") && !fileName.equals("\01") && !fileName.equals("..")) {
+		    	        	                if (!".".equals(fileName) && !"\01".equals(fileName) && !"..".equals(fileName)) {
 		    	        	                    String sourceFileName = String.format("%s/%s", sourceLocalFileName.toString(), fileName);
 		    	        	                	if (ivfs.ioGetstat(sourceFileName, stat) >= 0) {
 		        	        	                	fileNames = add(fileNames, fileName);

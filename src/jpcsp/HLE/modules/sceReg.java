@@ -1434,13 +1434,13 @@ public class sceReg extends HLEModule {
     			log.warn(String.format("Unknown registry entry '%s/%s'", fullName, name));
     		}
     	} else if ("/CONFIG/NETWORK/GO_MESSENGER".equals(fullName)) {
-    		if (name.equals("auth_name")) {
+    		if ("auth_name".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authName.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, authName);
     			}
-    		} else if (name.equals("auth_key")) {
+    		} else if ("auth_key".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authKey.length() + 1);
     			if (size > 0) {
@@ -1450,13 +1450,13 @@ public class sceReg extends HLEModule {
     			log.warn(String.format("Unknown registry entry '%s/%s'", fullName, name));
     		}
     	} else if ("/CONFIG/NETWORK/ADHOC".equals(fullName)) {
-    		if (name.equals("ssid_prefix")) {
+    		if ("ssid_prefix".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(adhocSsidPrefix.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, adhocSsidPrefix);
     			}
-    		} else if (name.equals("channel")) {
+    		} else if ("channel".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
@@ -1472,19 +1472,19 @@ public class sceReg extends HLEModule {
     			if (size >= 4) {
     				buf.setValue32(networkLatestId);
     			}
-    		} else if (name.equals("eap_md5")) {
+    		} else if ("eap_md5".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(0);
     			}
-    		} else if (name.equals("auto_setting")) {
+    		} else if ("auto_setting".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(0);
     			}
-    		} else if (name.equals("wifisvc_setting")) {
+    		} else if ("wifisvc_setting".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
@@ -1628,31 +1628,31 @@ public class sceReg extends HLEModule {
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, gateway);
     			}
-    		} else if (name.equals("device")) {
+    		} else if ("device".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(1);
     			}
-    		} else if (name.equals("auth_name")) {
+    		} else if ("auth_name".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authName.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, authName);
     			}
-    		} else if (name.equals("auth_key")) {
+    		} else if ("auth_key".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authKey.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, authKey);
     			}
-    		} else if (name.equals("auth_8021x_auth_name")) {
+    		} else if ("auth_8021x_auth_name".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authName.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, authName);
     			}
-    		} else if (name.equals("auth_8021x_auth_key")) {
+    		} else if ("auth_8021x_auth_key".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authKey.length() + 1);
     			if (size > 0) {
@@ -1664,7 +1664,7 @@ public class sceReg extends HLEModule {
     			if (size >= 4) {
     				buf.setValue32(0);
     			}
-    		} else if (name.equals("wpa_key")) {
+    		} else if ("wpa_key".equals(name)) {
     			ptype.setValue(REG_TYPE_BIN);
     			String wpaKey = "";
     			psize.setValue(wpaKey.length() + 1);
@@ -1693,38 +1693,38 @@ public class sceReg extends HLEModule {
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, lastLeasedDhcpAddr);
     			}
-    		} else if (name.equals("wifisvc_auth_name")) {
+    		} else if ("wifisvc_auth_name".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authName.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, authName);
     			}
-    		} else if (name.equals("wifisvc_auth_key")) {
+    		} else if ("wifisvc_auth_key".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			psize.setValue(authKey.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, authKey);
     			}
-    		} else if (name.equals("wifisvc_option")) {
+    		} else if ("wifisvc_option".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(0);
     			}
-    		} else if (name.equals("bt_id")) {
+    		} else if ("bt_id".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(0);
     			}
-    		} else if (name.equals("at_command")) {
+    		} else if ("at_command".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			String atCommand = "";
     			psize.setValue(atCommand.length() + 1);
     			if (size > 0) {
     				Utilities.writeStringNZ(buf.getMemory(), buf.getAddress(), size, atCommand);
     			}
-    		} else if (name.equals("phone_number")) {
+    		} else if ("phone_number".equals(name)) {
     			ptype.setValue(REG_TYPE_STR);
     			String phoneNumber = "";
     			psize.setValue(phoneNumber.length() + 1);
@@ -1741,31 +1741,31 @@ public class sceReg extends HLEModule {
     			if (size >= 4) {
     				buf.setValue32(wifiConnectCount);
     			}
-    		} else if (name.equals("usb_connect_count")) {
+    		} else if ("usb_connect_count".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(usbConnectCount);
     			}
-    		} else if (name.equals("psn_access_count")) {
+    		} else if ("psn_access_count".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(psnAccountCount);
     			}
-    		} else if (name.equals("slide_count")) {
+    		} else if ("slide_count".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(slideCount);
     			}
-    		} else if (name.equals("boot_count")) {
+    		} else if ("boot_count".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(bootCount);
     			}
-    		} else if (name.equals("game_exec_count")) {
+    		} else if ("game_exec_count".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
@@ -1851,25 +1851,25 @@ public class sceReg extends HLEModule {
     			if (size >= 4) {
     				buf.setValue32(oskVersionId);
     			}
-    		} else if (name.equals("disp_locale")) {
+    		} else if ("disp_locale".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(oskDispLocale);
     			}
-    		} else if (name.equals("writing_locale")) {
+    		} else if ("writing_locale".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(oskWritingLocale);
     			}
-    		} else if (name.equals("input_char_mask")) {
+    		} else if ("input_char_mask".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(oskInputCharMask);
     			}
-    		} else if (name.equals("keytop_index")) {
+    		} else if ("keytop_index".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
@@ -1885,13 +1885,13 @@ public class sceReg extends HLEModule {
     			if (size >= 4) {
     				buf.setValue32(musicVisualizerMode);
     			}
-    		} else if (name.equals("track_info_mode")) {
+    		} else if ("track_info_mode".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
     				buf.setValue32(musicTrackInfoMode);
     			}
-    		} else if (name.equals("wma_play")) {
+    		} else if ("wma_play".equals(name)) {
     			ptype.setValue(REG_TYPE_INT);
     			psize.setValue(4);
     			if (size >= 4) {
@@ -2921,13 +2921,13 @@ public class sceReg extends HLEModule {
     	} else if ("/CONFIG/OSK".equals(fullName)) {
     		if ("version_id".equals(name) && size >= 4) {
     			oskVersionId = buf.getValue32();
-    		} else if (name.equals("disp_locale") && size >= 4) {
+    		} else if ("disp_locale".equals(name) && size >= 4) {
     			oskDispLocale = buf.getValue32();
-    		} else if (name.equals("writing_locale") && size >= 4) {
+    		} else if ("writing_locale".equals(name) && size >= 4) {
     			oskWritingLocale = buf.getValue32();
-    		} else if (name.equals("input_char_mask") && size >= 4) {
+    		} else if ("input_char_mask".equals(name) && size >= 4) {
     			oskInputCharMask = buf.getValue32();
-    		} else if (name.equals("keytop_index") && size >= 4) {
+    		} else if ("keytop_index".equals(name) && size >= 4) {
     			oskKeytopIndex = buf.getValue32();
     		} else {
     			log.warn(String.format("Unknown registry entry '%s'", name));
@@ -3156,7 +3156,7 @@ public class sceReg extends HLEModule {
     	} else if ("/CONFIG/MUSIC".equals(fullName)) {
     		if ("visualizer_mode".equals(name) && size >= 4) {
     			musicVisualizerMode = buf.getValue32();
-    		} else if (name.equals("track_info_mode") && size >= 4) {
+    		} else if ("track_info_mode".equals(name) && size >= 4) {
     			musicTrackInfoMode = buf.getValue32();
     		} else {
     			log.warn(String.format("Unknown registry entry '%s/%s'", fullName, name));
@@ -3167,27 +3167,27 @@ public class sceReg extends HLEModule {
     			if (log.isDebugEnabled()) {
     				log.debug(String.format("sceRegSetKeyValue msid='%s'", msid));
     			}
-    		} else if (name.equals("file_folder") && size >= 4) {
+    		} else if ("file_folder".equals(name) && size >= 4) {
     			int fileFolder = buf.getValue32();
     			if (log.isDebugEnabled()) {
     				log.debug(String.format("sceRegSetKeyValue fileFolder=0x%X", fileFolder));
     			}
-    		} else if (name.equals("file_number") && size >= 4) {
+    		} else if ("file_number".equals(name) && size >= 4) {
     			int fileNumber = buf.getValue32();
     			if (log.isDebugEnabled()) {
     				log.debug(String.format("sceRegSetKeyValue fileNumber=0x%X", fileNumber));
     			}
-    		} else if (name.equals("movie_quality") && size >= 4) {
+    		} else if ("movie_quality".equals(name) && size >= 4) {
     			int movieQuality = buf.getValue32();
     			if (log.isDebugEnabled()) {
     				log.debug(String.format("sceRegSetKeyValue movieQuality=0x%X", movieQuality));
     			}
-    		} else if (name.equals("movie_size") && size >= 4) {
+    		} else if ("movie_size".equals(name) && size >= 4) {
     			int movieSize = buf.getValue32();
     			if (log.isDebugEnabled()) {
     				log.debug(String.format("sceRegSetKeyValue movieSize=0x%X", movieSize));
     			}
-    		} else if (name.equals("movie_fps") && size >= 4) {
+    		} else if ("movie_fps".equals(name) && size >= 4) {
     			int movieFps = buf.getValue32();
     			if (log.isDebugEnabled()) {
     				log.debug(String.format("sceRegSetKeyValue movieFps=0x%X", movieFps));

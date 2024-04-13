@@ -53,7 +53,7 @@ public class LocalVirtualFileSystem extends AbstractVirtualFileSystem {
     // modeStrings indexed by [0, PSP_O_RDONLY, PSP_O_WRONLY, PSP_O_RDWR]
     // SeekableRandomFile doesn't support write only: take "rw",
     private final static String[] modeStrings = {"r", "r", "rw", "rw"};
-    private final static boolean fileNamesAreCaseSensitive = System.getProperty("os.name").equalsIgnoreCase("Linux");
+    private final static boolean fileNamesAreCaseSensitive = "Linux".equalsIgnoreCase(System.getProperty("os.name"));
 
     /**
      * Get the file name as returned from the memory stick.
@@ -351,7 +351,7 @@ public class LocalVirtualFileSystem extends AbstractVirtualFileSystem {
 		switch (command) {
 	        // Invalidate the MemoryStick driver cache (fatms0).
 	        case 0x0240D81E: {
-	        	if (!deviceName.equals("fatms0:")) {
+	        	if (!"fatms0:".equals(deviceName)) {
 	        		result = ERROR_KERNEL_UNSUPPORTED_OPERATION;
 	        	} else if (inputLength != 0 || outputLength != 0) {
 	            	result = SceKernelErrors.ERROR_ERRNO_INVALID_ARGUMENT;
@@ -364,7 +364,7 @@ public class LocalVirtualFileSystem extends AbstractVirtualFileSystem {
 	        case 0x02415821: {
 	            log.debug("sceIoDevctl register memorystick insert/eject callback (fatms0)");
 	            ThreadManForUser threadMan = Modules.ThreadManForUserModule;
-	            if (!deviceName.equals("fatms0:")) {
+	            if (!"fatms0:".equals(deviceName)) {
 	            	result = ERROR_MEMSTICK_DEVCTL_BAD_PARAMS;
 	            } else if (inputPointer.isAddressGood() && inputLength == 4) {
 	                int cbid = inputPointer.getValue32();
@@ -386,7 +386,7 @@ public class LocalVirtualFileSystem extends AbstractVirtualFileSystem {
 	        case 0x02415822: {
 	            log.debug("sceIoDevctl unregister memorystick insert/eject callback (fatms0)");
 	            ThreadManForUser threadMan = Modules.ThreadManForUserModule;
-	            if (!deviceName.equals("fatms0:")) {
+	            if (!"fatms0:".equals(deviceName)) {
 	            	result = ERROR_MEMSTICK_DEVCTL_BAD_PARAMS;
 	            } else if (inputPointer.isAddressGood() && inputLength == 4) {
 	                int cbid = inputPointer.getValue32();
@@ -400,7 +400,7 @@ public class LocalVirtualFileSystem extends AbstractVirtualFileSystem {
 	        // Set if the device is assigned/inserted or not (fatms0).
 	        case 0x02415823: {
 	            log.debug("sceIoDevctl set assigned device (fatms0)");
-	            if (!deviceName.equals("fatms0:")) {
+	            if (!"fatms0:".equals(deviceName)) {
 	            	result = ERROR_MEMSTICK_DEVCTL_BAD_PARAMS;
 	            } else if (inputPointer.isAddressGood() && inputLength >= 4) {
 	                // 0 - Device is not assigned (callback not registered).
@@ -415,7 +415,7 @@ public class LocalVirtualFileSystem extends AbstractVirtualFileSystem {
 	        // Check if the device is write protected (fatms0).
 	        case 0x02425824: {
 	            log.debug("sceIoDevctl check write protection (fatms0)");
-	            if (!deviceName.equals("fatms0:") && !deviceName.equals("ms0:")) { // For this command the alias "ms0:" is also supported.
+	            if (!"fatms0:".equals(deviceName) && !"ms0:".equals(deviceName)) { // For this command the alias "ms0:" is also supported.
 	            	result = ERROR_MEMSTICK_DEVCTL_BAD_PARAMS;
 	            } else if (outputPointer.isAddressGood()) {
 	                // 0 - Device is not protected.
@@ -459,7 +459,7 @@ public class LocalVirtualFileSystem extends AbstractVirtualFileSystem {
 	        // Check if the device is assigned/inserted (fatms0).
 	        case 0x02425823: {
 	            log.debug("sceIoDevctl check assigned device (fatms0)");
-	            if (!deviceName.equals("fatms0:")) {
+	            if (!"fatms0:".equals(deviceName)) {
 	            	result = ERROR_MEMSTICK_DEVCTL_BAD_PARAMS;
 	            } else if (outputPointer.isAddressGood() && outputLength >= 4) {
 	                // 0 - Device is not assigned (callback not registered).
