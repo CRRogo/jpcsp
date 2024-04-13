@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.HLE.modules;
 
+import java.security.SecureRandom;
 import static jpcsp.crypto.KIRK.PSP_KIRK_CMD_DECRYPT;
 import static jpcsp.crypto.KIRK.PSP_KIRK_CMD_ECDSA_GEN_KEYS;
 import static jpcsp.crypto.KIRK.PSP_KIRK_CMD_ECDSA_MULTIPLY_POINT;
@@ -50,7 +51,7 @@ import jpcsp.memory.ByteArrayMemory;
  */
 public class sceMemab extends HLEModule {
     public static Logger log = Modules.getLogger("sceMemab");
-    private Random random = new Random();
+    private Random random = new SecureRandom();
     private long scrambleCounter;
     private byte[] randomKey;
 

@@ -17,6 +17,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
 package jpcsp.hardware;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import jpcsp.settings.Settings;
@@ -51,7 +52,7 @@ public class Battery {
     public static void initialize() {
     	// Generate a random but valid battery serial number
     	int randomBatterySerialNumber;
-    	Random random = new Random();
+    	Random random = new SecureRandom();
     	do {
     		randomBatterySerialNumber = random.nextInt(); 
     	} while (randomBatterySerialNumber == BATTERY_SERIAL_NUMBER_SERVICE || randomBatterySerialNumber == BATTERY_SERIAL_NUMBER_AUTOBOOT);
