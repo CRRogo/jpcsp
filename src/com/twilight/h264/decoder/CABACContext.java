@@ -956,7 +956,9 @@ public class CABACContext {
 	        state_offset += 2;
 	    }else{
 	        if( this.get_cabac_noinline( h.cabac_state, state_offset ) == 0 )
-	            return 0;   /* I4x4 */
+	            {
+	                return 0;
+	            }   /* I4x4 */
 	    }
 
 	    if( this.get_cabac_terminate() != 0 )

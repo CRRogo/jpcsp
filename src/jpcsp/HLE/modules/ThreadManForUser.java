@@ -2265,7 +2265,9 @@ public class ThreadManForUser extends HLEModule {
     public int checkThreadID(int uid) {
         if (uid == 0) {
 			if (log.isDebugEnabled())
-				log.debug("checkThreadID illegal thread uid=0");
+				{
+				    log.debug("checkThreadID illegal thread uid=0");
+				}
             throw new SceKernelErrorException(ERROR_KERNEL_ILLEGAL_THREAD);
         }
         return checkThreadIDAllow0(uid);
@@ -2284,7 +2286,9 @@ public class ThreadManForUser extends HLEModule {
         }
     	if (!threadMap.containsKey(uid)) {
 			if (log.isDebugEnabled())
-				log.debug(String.format("checkThreadID not found thread 0x%08X", uid));
+				{
+				    log.debug(String.format("checkThreadID not found thread 0x%08X", uid));
+				}
             throw new SceKernelErrorException(ERROR_KERNEL_NOT_FOUND_THREAD);
     	}
 
@@ -2305,7 +2309,9 @@ public class ThreadManForUser extends HLEModule {
     public int checkThreadIDNoCheck0(int uid) {
         if (uid == 0) {
 			if (log.isDebugEnabled()) 
-				log.debug(String.format("checkThreadID not found thread 0x%08X", uid));
+				{
+				    log.debug(String.format("checkThreadID not found thread 0x%08X", uid));
+				}
             throw new SceKernelErrorException(ERROR_KERNEL_NOT_FOUND_THREAD);
         }
         return checkThreadIDAllow0(uid);
