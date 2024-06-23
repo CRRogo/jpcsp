@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.remote;
 
+import io.github.pixee.security.ZipSecurity;
 import static jpcsp.Allegrex.compiler.RuntimeContext.setLog4jMDC;
 import static jpcsp.HLE.modules.sceNpAuth.STATUS_ACCOUNT_PARENTAL_CONTROL_ENABLED;
 import static jpcsp.HLE.modules.sceNpAuth.addTicketDateParam;
@@ -1635,7 +1636,7 @@ public class HTTPServer {
 
 		InputStream zipInput = getClass().getResourceAsStream(zipFileName);
 		if (zipInput != null) {
-			ZipInputStream zipContent = new ZipInputStream(zipInput);
+			ZipInputStream zipContent = ZipSecurity.createHardenedInputStream(zipInput);
 			while (true) {
 				ZipEntry entry = zipContent.getNextEntry();
 				if (entry == null) {
@@ -1833,7 +1834,7 @@ public class HTTPServer {
 			// The Samsung Smart TV is rejecting the installation of a Widget
 			// containing code for another architecture.
 			int machineArchitecture = Integer.parseInt(architecture);
-			ZipInputStream zin = new ZipInputStream(getClass().getResourceAsStream(pathValue));
+			ZipInputStream zin = ZipSecurity.createHardenedInputStream(getClass().getResourceAsStream(pathValue));
 			ByteArrayOutputStream out = new ByteArrayOutputStream(1000000);
 			ZipOutputStream zout = new ZipOutputStream(out);
 			byte[] buffer = new byte[100000];
