@@ -16,6 +16,7 @@
  */
 package jpcsp.memory;
 
+import io.github.pixee.security.BoundedLineReader;
 import static jpcsp.Allegrex.compiler.RuntimeContextLLE.getProcessor;
 
 import java.io.BufferedReader;
@@ -206,7 +207,7 @@ public class DebuggerMemory extends Memory {
             pauseEmulatorOnMemoryBreakpoint = false;
 
             while (true) {
-                String line = in.readLine();
+                String line = BoundedLineReader.readLine(in, 5_000_000);
                 if (line == null) {
                     break;
                 }
