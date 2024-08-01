@@ -16,6 +16,7 @@
  */
 package jpcsp.memory;
 
+import java.nio.file.Files;
 import static jpcsp.Allegrex.compiler.RuntimeContextLLE.getProcessor;
 
 import java.io.BufferedReader;
@@ -117,7 +118,7 @@ public class DebuggerMemory extends Memory {
     final public void exportBreakpoints(File f) {
         BufferedWriter out = null;
         try {
-            out = new BufferedWriter(new FileWriter(f));
+            out = Files.newBufferedWriter(f.toPath());
 
             Iterator<MemoryBreakpoint> it = memoryBreakpoints.iterator();
             while (it.hasNext()) {
