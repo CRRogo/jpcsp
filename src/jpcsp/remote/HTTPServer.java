@@ -16,6 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.remote;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static jpcsp.Allegrex.compiler.RuntimeContext.setLog4jMDC;
 import static jpcsp.HLE.modules.sceNpAuth.STATUS_ACCOUNT_PARENTAL_CONTROL_ENABLED;
 import static jpcsp.HLE.modules.sceNpAuth.addTicketDateParam;
@@ -531,7 +533,7 @@ public class HTTPServer {
 			log.debug(String.format("doProxy connecting to '%s'", remoteUrl));
 		}
 
-		HttpURLConnection connection = (HttpURLConnection) new URL(remoteUrl).openConnection();
+		HttpURLConnection connection = (HttpURLConnection) Urls.create(remoteUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openConnection();
 		for (String key : request.keySet()) {
 			if (!data.equals(key) && !method.equals(key) && !version.equals(key) && !path.equals(key) && !parameters.equals(key)) {
 				connection.setRequestProperty(key, request.get(key));

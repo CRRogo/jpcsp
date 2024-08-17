@@ -16,6 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.network.upnp;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static jpcsp.network.protocols.UDP.UDP_PORT_SSDP;
 
 import java.io.ByteArrayInputStream;
@@ -286,7 +288,7 @@ public class UPnP {
 		byte[] bodyBytes = body.toString().getBytes();
 
 		try {
-			URL url = new URL(controlUrl);
+			URL url = Urls.create(controlUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 			URLConnection connection = url.openConnection();
 			if (connection instanceof HttpURLConnection) {
 				HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
