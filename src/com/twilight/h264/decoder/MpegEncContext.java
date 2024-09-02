@@ -1129,9 +1129,13 @@ public class MpegEncContext {
 
                 // no edge if EDGE EMU or not planar YUV
                 if((this.flags&CODEC_FLAG_EMU_EDGE)!=0 || 0==size[2])
-                    buf.data_offset[i] = 0;
+                    {
+                        buf.data_offset[i] = 0;
+                    }
                 else
-                    buf.data_offset[i] = ((((buf.linesize[i]*EDGE_WIDTH>>v_shift) + (EDGE_WIDTH>>h_shift))+(stride_align[i])-1)&~((stride_align[i])-1)); 
+                    {
+                        buf.data_offset[i] = ((((buf.linesize[i]*EDGE_WIDTH>>v_shift) + (EDGE_WIDTH>>h_shift))+(stride_align[i])-1)&~((stride_align[i])-1));
+                    } 
                       //+ FFALIGN((buf.linesize[i]*EDGE_WIDTH>>v_shift) + (EDGE_WIDTH>>h_shift), stride_align[i]);
             }
             if(size[1]!=0 && 0==size[2])
