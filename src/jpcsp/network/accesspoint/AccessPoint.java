@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.network.accesspoint;
 
+import java.security.SecureRandom;
 import static jpcsp.Allegrex.compiler.RuntimeContext.setLog4jMDC;
 import static jpcsp.HLE.modules.sceNetAdhoc.ANY_MAC_ADDRESS;
 import static jpcsp.HLE.modules.sceNetInet.internetAddressToBytes;
@@ -339,7 +340,7 @@ public class AccessPoint implements IProcessHTTPRequest {
 		tcpConnections = new LinkedList<TcpConnection>();
 		udpConnections = new LinkedList<UdpConnection>();
 
-		random = new Random();
+		random = new SecureRandom();
 
 		if (!createAccessPointSocket()) {
 			log.error(String.format("Cannot create access point socket"));

@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.format.rco.vsmx.objects;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import jpcsp.format.rco.vsmx.VSMX;
@@ -44,7 +45,7 @@ public class Math extends BaseNativeObject {
 
 	private Math(VSMXInterpreter interpreter) {
 		this.interpreter = interpreter;
-		random = new Random();
+		random = new SecureRandom();
 	}
 
 	public VSMXBaseObject random(VSMXBaseObject object) {

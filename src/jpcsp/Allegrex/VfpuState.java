@@ -25,6 +25,7 @@ import static java.lang.Math.min;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Arrays;
 
 import jpcsp.Memory;
@@ -370,7 +371,7 @@ public class VfpuState extends FpuState {
 
     public VfpuState() {
         vcr = new Vcr();
-        rnd = new Random();
+        rnd = new SecureRandom();
     }
 
     public void initialize() {

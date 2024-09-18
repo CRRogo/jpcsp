@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.HLE.kernel.types;
 
+import java.security.SecureRandom;
 import static jpcsp.hardware.Wlan.MAC_ADDRESS_LENGTH;
 import static jpcsp.hardware.Wlan.validMacAddressOUIs;
 import static jpcsp.util.Utilities.hasBit;
@@ -278,7 +279,7 @@ public class pspNetMacAddress extends pspAbstractMemoryMappedStructure {
 	 */
 	public static byte[] getRandomMacAddress() {
 		byte[] macAddress = new byte[MAC_ADDRESS_LENGTH];
-		Random random = new Random();
+		Random random = new SecureRandom();
 
 		// Select one random OUI from the list of valid ones
 		byte[] oui = validMacAddressOUIs[random.nextInt(validMacAddressOUIs.length)];

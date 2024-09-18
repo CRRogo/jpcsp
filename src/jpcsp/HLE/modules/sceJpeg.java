@@ -16,6 +16,7 @@
  */
 package jpcsp.HLE.modules;
 
+import java.security.SecureRandom;
 import static jpcsp.graphics.GeCommands.TPSM_PIXEL_STORAGE_MODE_32BIT_ABGR8888;
 import static jpcsp.graphics.RE.IRenderingEngine.sizeOfTextureType;
 import static jpcsp.graphics.VideoEngineUtilities.getPixelFormatBytes;
@@ -197,7 +198,7 @@ public class sceJpeg extends HLEModule {
     private static void generateFakeImage(int dest_addr, int frameWidth, int imageWidth, int imageHeight, int pixelMode) {
         Memory mem = Memory.getInstance();
 
-        Random random = new Random();
+        Random random = new SecureRandom();
         final int pixelSize = 3;
         final int bytesPerPixel = getPixelFormatBytes(pixelMode);
         for (int y = 0; y < imageHeight - pixelSize + 1; y += pixelSize) {

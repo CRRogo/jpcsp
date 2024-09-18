@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.HLE.modules;
 
+import java.security.SecureRandom;
 import static jpcsp.util.Utilities.endianSwap16;
 
 import java.security.MessageDigest;
@@ -69,7 +70,7 @@ public class sceNet extends HLEModule {
 		0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x10, 0x10, 0x10, 0x10, 0x20
 	};
 	protected Map<Integer, Integer> allocatedThreadStructures;
-	protected final Random random = new Random();
+	protected final Random random = new SecureRandom();
 	protected int readCallback;
 	protected int unknownCallback1;
 	protected int adhocSocketAlertCallback;
