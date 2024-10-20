@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.Allegrex.compiler.nativeCode;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -104,7 +105,7 @@ public class NativeCodeManager {
 		
 		try {
 			while (true) {
-				String line = reader.readLine();
+				String line = BoundedLineReader.readLine(reader, 5_000_000);
 				if (line == null) {
 					break;
 				}
@@ -147,7 +148,7 @@ public class NativeCodeManager {
 
 		try {
 			while (true) {
-				String line = reader.readLine();
+				String line = BoundedLineReader.readLine(reader, 5_000_000);
 				if (line == null) {
 					break;
 				}

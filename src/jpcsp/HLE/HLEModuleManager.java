@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.HLE;
 
+import io.github.pixee.security.BoundedLineReader;
 import static jpcsp.Allegrex.Common._a2;
 import static jpcsp.Allegrex.Common._a3;
 import static jpcsp.Allegrex.Common._ra;
@@ -895,7 +896,7 @@ public class HLEModuleManager {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(buffer)));
 			while (true) {
-				String line = reader.readLine();
+				String line = BoundedLineReader.readLine(reader, 5_000_000);
 				if (line == null) {
 					break;
 				}

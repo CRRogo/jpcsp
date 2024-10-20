@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.remote;
 
+import io.github.pixee.security.BoundedLineReader;
 import static jpcsp.Allegrex.compiler.RuntimeContext.setLog4jMDC;
 import static jpcsp.HLE.modules.sceNpAuth.STATUS_ACCOUNT_PARENTAL_CONTROL_ENABLED;
 import static jpcsp.HLE.modules.sceNpAuth.addTicketDateParam;
@@ -1613,7 +1614,7 @@ public class HTTPServer {
 		try {
 			dir = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(widgetPath)));
 			while (true) {
-				String entry = dir.readLine();
+				String entry = BoundedLineReader.readLine(dir, 5_000_000);
 				if (entry == null) {
 					break;
 				}

@@ -16,6 +16,7 @@
  */
 package jpcsp.util;
 
+import io.github.pixee.security.BoundedLineReader;
 import static java.lang.System.arraycopy;
 import static jpcsp.Memory.addressMask;
 
@@ -748,7 +749,7 @@ public class Utilities {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-            while (null != (string = reader.readLine())) {
+            while (null != (string = BoundedLineReader.readLine(reader, 5_000_000))) {
                 outputBuilder.append(string).append('\n');
             }
         } finally {

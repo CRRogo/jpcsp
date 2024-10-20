@@ -16,6 +16,7 @@
  */
 package jpcsp.Debugger.DisassemblerModule;
 
+import io.github.pixee.security.BoundedLineReader;
 import static jpcsp.Allegrex.Common._ra;
 import static jpcsp.Allegrex.Common._zr;
 import static jpcsp.Allegrex.Common.gprNames;
@@ -1982,11 +1983,11 @@ private void ImportBreaksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }
 
             in = new BufferedReader(new FileReader(f));
-            String nextBrk = in.readLine();
+            String nextBrk = BoundedLineReader.readLine(in, 5_000_000);
 
             while (nextBrk != null) {
                 breakpoints.add(Integer.parseInt(nextBrk, 16));
-                nextBrk = in.readLine();
+                nextBrk = BoundedLineReader.readLine(in, 5_000_000);
             }
 
             RefreshDebuggerDisassembly(false);

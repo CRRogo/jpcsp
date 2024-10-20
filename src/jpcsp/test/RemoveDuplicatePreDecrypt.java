@@ -16,6 +16,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -45,7 +46,7 @@ public class RemoveDuplicatePreDecrypt {
 		String nl = System.lineSeparator();
 		int countRemoved = 0;
 		while (true) {
-			String line = in.readLine();
+			String line = BoundedLineReader.readLine(in, 5_000_000);
 			if (line == null) {
 				break;
 			}
