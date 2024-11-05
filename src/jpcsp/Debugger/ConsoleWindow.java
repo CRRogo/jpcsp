@@ -24,6 +24,7 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.file.Files;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import jpcsp.util.Utilities;
@@ -146,7 +147,7 @@ private void SaveMessageToFileButtonActionPerformed(java.awt.event.ActionEvent e
             }
 
             //IOHelper.saveTxtFile(f, ta_messages.getText(), false);
-            out = new BufferedWriter(new FileWriter(f));
+            out = Files.newBufferedWriter(f.toPath());
             out.write(talogging.getText());
         } catch (Exception e) {
             e.printStackTrace();

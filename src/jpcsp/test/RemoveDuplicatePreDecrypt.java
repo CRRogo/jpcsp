@@ -22,6 +22,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +37,7 @@ public class RemoveDuplicatePreDecrypt {
 
 	public void run() throws IOException {
 		BufferedReader in = new BufferedReader(new FileReader("src/jpcsp/crypto/PreDecrypt.xml"));
-		Writer out = new BufferedWriter(new FileWriter("PreDecrypt.xml"));
+		Writer out = Files.newBufferedWriter("PreDecrypt.xml".toPath());
 
 		Set<String> found = new HashSet<String>();
 		StringBuilder current = new StringBuilder();

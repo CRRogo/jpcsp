@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import javax.swing.JFileChooser;
 
@@ -271,7 +272,7 @@ private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         BufferedWriter bufferedWriter = null;
         try {
             // construct the BufferedWriter object
-            bufferedWriter = new BufferedWriter(new FileWriter(file));
+            bufferedWriter = Files.newBufferedWriter(file.toPath());
 
             // start writing to the output stream
             for (int i = 0; i < OpcodeTable.getRowCount(); i++) {
