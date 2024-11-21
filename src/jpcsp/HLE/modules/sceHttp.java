@@ -16,6 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.HLE.modules;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -187,9 +189,9 @@ public class sceHttp extends HLEModule {
 
 			try {
 				if (proxy != null) {
-					urlConnection = new URL(sendUrl).openConnection(proxy);
+					urlConnection = Urls.create(sendUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openConnection(proxy);
 				} else {
-					urlConnection = new URL(sendUrl).openConnection();
+					urlConnection = Urls.create(sendUrl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).openConnection();
 				}
 
 				String agent = getHttpConnection().getHttpTemplate().getAgent();
